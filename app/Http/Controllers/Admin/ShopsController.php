@@ -23,7 +23,8 @@ class ShopsController extends Controller
         abort_if(Gate::denies('shop_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $shops = Shop::all();
-
+//        $shop = Shop::query()->first();
+//        dd($shop->photos);
         return view('admin.shops.index', compact('shops'));
     }
 
@@ -43,14 +44,14 @@ class ShopsController extends Controller
         $shop->categories()->sync($request->input('categories', []));
 
         $hours = collect($request->input('from_hours'))->mapWithKeys(function($value, $id) use ($request) {
-            return $value ? [ 
+            return $value ? [
                     $id => [
-                        'from_hours'    => $value, 
-                        'from_minutes'  => $request->input('from_minutes.'.$id), 
+                        'from_hours'    => $value,
+                        'from_minutes'  => $request->input('from_minutes.'.$id),
                         'to_hours'      => $request->input('to_hours.'.$id),
                         'to_minutes'    => $request->input('to_minutes.'.$id)
                     ]
-                ] 
+                ]
                 : [];
         });
         $shop->days()->sync($hours);
@@ -85,14 +86,14 @@ class ShopsController extends Controller
         $shop->categories()->sync($request->input('categories', []));
 
         $hours = collect($request->input('from_hours'))->mapWithKeys(function($value, $id) use ($request) {
-            return $value ? [ 
+            return $value ? [
                     $id => [
-                        'from_hours'    => $value, 
-                        'from_minutes'  => $request->input('from_minutes.'.$id), 
+                        'from_hours'    => $value,
+                        'from_minutes'  => $request->input('from_minutes.'.$id),
                         'to_hours'      => $request->input('to_hours.'.$id),
                         'to_minutes'    => $request->input('to_minutes.'.$id)
                     ]
-                ] 
+                ]
                 : [];
         });
         $shop->days()->sync($hours);
