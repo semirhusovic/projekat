@@ -70,12 +70,35 @@ function initialize() {
             marker.setVisible(true);
 
         });
+        google.maps.event.addListener(map, 'click', function(event) {
+            addMarker(marker, event.latLng, map);
+        });
     }
+
 }
 
-function setLocationCoordinates(key, lat, lng) {
+function setLocationCoordinates(key='address', lat, lng) {
+    console.log(key + "-" + "latitude");
     const latitudeField = document.getElementById(key + "-" + "latitude");
     const longitudeField = document.getElementById(key + "-" + "longitude");
     latitudeField.value = lat;
     longitudeField.value = lng;
+    console.log(latitudeField.value,longitudeField.value);
 }
+
+// Adds a marker to the map.
+function addMarker(marker,location, map) {
+    if (marker == null)
+    {
+        var marker = new google.maps.Marker({
+            position: location,
+            map: map,
+        });
+    }
+    else
+    {
+        marker.setPosition(location);
+        setLocationCoordinates(undefined,marker.getPosition().lat(),marker.getPosition().lng())
+    }
+}
+
