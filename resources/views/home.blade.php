@@ -109,8 +109,8 @@
 	  	}
 		var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
         var image = new google.maps.MarkerImage("assets/images/pin.png", null, null, null, new google.maps.Size(40,52));
-        var d = new google.maps.geometry.spherical.computeDistanceBetween('43.0369,19.7562', '42.4304,19.2594');
-        console.log(d)
+        // var d = new google.maps.geometry.spherical.computeDistanceBetween('43.0369,19.7562', '42.4304,19.2594');
+        // console.log(d)
         var places = @json($mapShops);
 
         for(place in places)
@@ -124,6 +124,7 @@
                     map: map,
                     title: place.name
                 });
+                console.log(marker)
                 var infowindow = new google.maps.InfoWindow();
                 google.maps.event.addListener(marker, 'click', (function (marker, place) {
                     return function () {

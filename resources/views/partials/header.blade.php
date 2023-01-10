@@ -8,7 +8,7 @@
         <nav id="primary-nav" class="primary-nav" role="navigation">
             <ul id="menu-gd-menu" class="menu">
                 @guest
-                    <li class="gd-menu-item menu-item menu-item-type-post_type_archive"><a href="{{ route('login') }}">Login??</a></li>
+                    <li class="gd-menu-item menu-item menu-item-type-post_type_archive"><a href="{{ route('login') }}">Login</a></li>
                     <li class="gd-menu-item menu-item menu-item-type-post_type_archive"><a href="{{ route('register') }}">Register</a></li>
                 @else
                     <li class="gd-menu-item menu-item menu-item-type-post_type_archive"><a href="{{ route('admin.shops.index') }}">Manage Shops</a></li>
