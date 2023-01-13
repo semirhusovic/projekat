@@ -20,9 +20,9 @@
                         @endif
                         @if($shop->categories->count())
                             <div class="geodir-single-taxonomies-container">
-                                <p class="geodir_post_taxomomies clearfix"> 
+                                <p class="geodir_post_taxomomies clearfix">
                                     <span class="geodir-category">
-                                        Categories: 
+                                        Categories:
                                         @foreach($shop->categories as $category)
                                             <a href="{{ route('home') }}?category={{ $category->id }}">{{ $category->name }}</a>{{ !$loop->last ? ',' : ''  }}
                                         @endforeach
@@ -33,15 +33,15 @@
                         <div class="geodir-single-tabs-container">
                             <div class="geodir-tabs" id="gd-tabs">
                                 <dl class="geodir-tab-head"><dt></dt>
-                                    <dd class="geodir-tab-active"><a data-tab="#post_content" data-status="enable"><i class="fas fa-home" aria-hidden="true"></i>About</a></dd><dt></dt>
+                                    <dd class="geodir-tab-active"><a data-tab="#post_content" data-status="enable"><i class="fas fa-home" aria-hidden="true"></i>Osnovne informacije</a></dd><dt></dt>
                                     @if($shop->photos->count())
-                                        <dd class=""><a data-tab="#post_images" data-status="enable"><i class="fas fa-image" aria-hidden="true"></i>Photos</a></dd><dt></dt>
+                                        <dd class=""><a data-tab="#post_images" data-status="enable"><i class="fas fa-image" aria-hidden="true"></i>Slike</a></dd><dt></dt>
                                     @endif
                                     @if($shop->latitude && $shop->longitude)
-                                        <dd class=""><a data-tab="#post_map" data-status="enable"><i class="fas fa-globe-americas" aria-hidden="true"></i>Map</a></dd><dt></dt>
+                                        <dd class=""><a data-tab="#post_map" data-status="enable"><i class="fas fa-globe-americas" aria-hidden="true"></i>Mapa</a></dd><dt></dt>
                                     @endif
                                     @if($shop->days->count())
-                                        <dd class=""><a data-tab="#working_hours" data-status="enable"><i class="fas fa-clock" aria-hidden="true"></i>Working Hours</a></dd>
+                                        <dd class=""><a data-tab="#working_hours" data-status="enable"><i class="fas fa-clock" aria-hidden="true"></i>Radno vrijeme</a></dd>
                                     @endif
                                 </dl>
                                 <ul class="geodir-tabs-content geodir-entry-content " style="z-index: 0; position: relative;">
@@ -49,16 +49,16 @@
                                         <div id="geodir-tab-content-post_content" class="hash-offset"></div>
                                         <div class="geodir-post-meta-container">
                                             <div class="geodir_post_meta  geodir-field-post_content">
-                                                <p>Address: {{ $shop->address }}</p>
-                                                <p>Description: {{ $shop->description }}</p>
-                                                @if($shop->days->count())
-                                                    @if($shop->working_hours->currentOpenRange(now()))
-                                                        <p>Shop is open and will close at {{ $shop->working_hours->currentOpenRange(now())->end() }}.</p>
-                                                    @else
-                                                        <p>Shop is closed since {{ $shop->working_hours->previousClose(now())->format('l H:i') }}
-                                                            and will re-open at {{ $shop->working_hours->nextOpen(now())->format('l H:i') }}</p>
-                                                    @endif
-                                                @endif
+                                                <p>Adresa: {{ $shop->address }}</p>
+                                                <p>Opis: {{ $shop->description }}</p>
+{{--                                                @if($shop->days->count())--}}
+{{--                                                    @if($shop->working_hours->currentOpenRange(now()))--}}
+{{--                                                        <p>Shop is open and will close at {{ $shop->working_hours->currentOpenRange(now())->end() }}.</p>--}}
+{{--                                                    @else--}}
+{{--                                                        <p>Ne radimo od {{  str_replace(array('Monday', 'Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'),array('Ponedeljak', 'Utorak','Srijeda','Cetvrtak','Petak','Subota','Nedelja'),$shop->working_hours->previousClose(now())->format('l H:i')) }}--}}
+{{--                                                            počinjemo od {{ str_replace(array('Monday', 'Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'),array('Ponedeljak', 'Utorak','Srijeda','Cetvrtak','Petak','Subota','Nedelja'),$shop->working_hours->nextOpen(now())->format('l H:i')) }}</p>--}}
+{{--                                                    @endif--}}
+{{--                                                @endif--}}
                                                 <p></p>
                                             </div>
                                         </div>
@@ -90,7 +90,7 @@
                                     @if($shop->days->count())
                                         <li id="working_hoursTab" style="display: none;">
                                             @foreach($shop->days as $day)
-                                                <p>{{ ucfirst($day->name) }}: from {{ $day->pivot->from_hours }}:{{ $day->pivot->from_minutes }} to {{ $day->pivot->to_hours }}:{{ $day->pivot->to_minutes }}</p>
+                                                <p>{{ str_replace(array('Monday', 'Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'),array('Ponedeljak', 'Utorak','Srijeda','Cetvrtak','Petak','Subota','Nedelja'),ucfirst($day->name))  }}: od {{ $day->pivot->from_hours }}:{{ $day->pivot->from_minutes }} do {{ $day->pivot->to_hours }}:{{ $day->pivot->to_minutes }}</p>
                                             @endforeach
                                         </li>
                                     @endif
