@@ -2,11 +2,11 @@
     <div class="container">
         <div class="site-logo-wrap">
             <hgroup>
-                <h1 class='site-title site-title-no-desc'> <a  style="color:#FFFFFF;" href='{{ route('home') }}' title='{{ config('app.name', 'Laravel Shops') }}' rel='home'>{{ config('app.name', 'Laravel Shops') }}</a></h1>
+                <h1 class='site-title site-title-no-desc'> <a  style="color:#FFFFFF;" href='{{ route('home') }}' title='{{ config('app.name', 'Laravel Shops') }}' rel='home'><img src="/assets/images/logo.png" height="100px"></a></h1>
             </hgroup>
         </div>
         <nav id="primary-nav" class="primary-nav" role="navigation">
-            <ul id="menu-gd-menu" class="menu">
+            <ul id="menu-gd-menu" style="padding-top: 20px" class="menu">
                 @guest
                     <li class="gd-menu-item menu-item menu-item-type-post_type_archive"><a href="{{ route('login') }}">Login</a></li>
                     <li class="gd-menu-item menu-item menu-item-type-post_type_archive"><a href="{{ route('register') }}">Register</a></li>
