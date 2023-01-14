@@ -9,11 +9,11 @@ class CreateCategoryShopPivotTable extends Migration
     public function up()
     {
         Schema::create('category_shop', function (Blueprint $table) {
-            $table->unsignedInteger('shop_id');
+            $table->unsignedBigInteger('shop_id');
 
             $table->foreign('shop_id', 'shop_id_fk_667152')->references('id')->on('shops')->onDelete('cascade');
 
-            $table->unsignedInteger('category_id');
+            $table->unsignedBigInteger('category_id');
 
             $table->foreign('category_id', 'category_id_fk_667152')->references('id')->on('categories')->onDelete('cascade');
         });

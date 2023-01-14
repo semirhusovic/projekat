@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\PermissionsController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\RolesController;
 use App\Http\Controllers\Admin\ShopsController;
 use App\Http\Controllers\Admin\UsersController;
@@ -42,4 +43,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('shops/destroy', [ShopsController::class,'massDestroy'])->name('shops.massDestroy');
     Route::post('shops/media', [ShopsController::class,'storeMedia'])->name('shops.storeMedia');
     Route::resource('shops', 'ShopsController');
+
+    //
+    Route::delete('products/destroy', [ShopsController::class,'massDestroy'])->name('products.massDestroy');
+    Route::resource('products', 'ProductController');
 });

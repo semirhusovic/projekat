@@ -7,7 +7,7 @@
             <div class="content-box content-single">
                 <article class="post-8 page type-page status-publish hentry">
                     <header>
-                        <h1 class="entry-title">{{ request()->filled('search') || request()->filled('category') ? 'Search results' : 'Svi oglasi' }}</h1></header>
+                        <h1 class="entry-title">{{ request()->filled('search') || request()->filled('category') ? 'Rezultati pretrage' : 'Sva imanja' }}</h1></header>
                     <div class="entry-content entry-summary">
                         <div class="geodir-search-container geodir-advance-search-default" data-show-adv="default">
                             <form class="geodir-listing-search gd-search-bar-style" name="geodir-listing-search" action="{{ route('home') }}" method="get">
@@ -168,10 +168,10 @@
                     <div class="geodir-output-location geodir-output-location-mapbubble">
                         <div class="geodir_post_meta  geodir-field-post_title"><span class="geodir_post_meta_icon geodir-i-text">
                             <i class="fas fa-minus" aria-hidden="true"></i>
-                            <span class="geodir_post_meta_title">Place Title: </span></span>`+place.name+`</div>
+                            <span class="geodir_post_meta_title">Naziv: </span></span>`+place.name+`</div>
                         <div class="geodir_post_meta  geodir-field-address" itemscope="" itemtype="http://schema.org/PostalAddress">
                             <span class="geodir_post_meta_icon geodir-i-address"><i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                            <span class="geodir_post_meta_title">Address: </span></span><span itemprop="streetAddress">`+place.address+`</span>
+                            <span class="geodir_post_meta_title">Adresa: </span></span><span itemprop="streetAddress">`+place.address+`</span>
                         </div>
                     </div>
                     </div>

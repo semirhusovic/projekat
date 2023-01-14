@@ -49,6 +49,11 @@ class Shop extends Model implements HasMedia
         return $this->belongsToMany(Category::class);
     }
 
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
     public function days()
     {
         return $this->belongsToMany(Day::class)->withPivot('from_hours', 'from_minutes', 'to_hours', 'to_minutes');

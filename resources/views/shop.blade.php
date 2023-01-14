@@ -22,7 +22,7 @@
                             <div class="geodir-single-taxonomies-container">
                                 <p class="geodir_post_taxomomies clearfix">
                                     <span class="geodir-category">
-                                        Categories:
+                                        Kategorije:
                                         @foreach($shop->categories as $category)
                                             <a href="{{ route('home') }}?category={{ $category->id }}">{{ $category->name }}</a>{{ !$loop->last ? ',' : ''  }}
                                         @endforeach
@@ -43,6 +43,7 @@
                                     @if($shop->days->count())
                                         <dd class=""><a data-tab="#working_hours" data-status="enable"><i class="fas fa-clock" aria-hidden="true"></i>Radno vrijeme</a></dd>
                                     @endif
+                                    <dd class=""><a data-tab="#post_products" data-status="enable"><i class="fas fa-shopping-bag" aria-hidden="true"></i>Proizvodi</a></dd><dt></dt>
                                 </dl>
                                 <ul class="geodir-tabs-content geodir-entry-content " style="z-index: 0; position: relative;">
                                     <li id="post_contentTab" style="display: none;"><span id="post_content"></span>
@@ -94,13 +95,61 @@
                                             @endforeach
                                         </li>
                                     @endif
+                                    <li id="post_productsTab" style="display: none;">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="content-box content-single">
+{{--                                                        start--}}
+
+                                                        <div class="geodir-loop-container">
+                                                            <ul class="geodir-category-list-view clearfix gridview_onethird geodir-listing-posts geodir-gridview gridview_onethird">
+                                                                @foreach($shop->products as $product)
+                                                                    <li class="gd_place type-gd_place status-publish has-post-thumbnail">
+                                                                        <div class="gd-list-item-left ">
+                                                                            <div class="geodir-post-slider">
+                                                                                <div class="geodir-image-container geodir-image-sizes-medium_large">
+                                                                                    <div class="geodir-image-wrapper">
+                                                                                        <ul class="geodir-post-image geodir-images clearfix">
+                                                                                            <li>
+                                                                                                    <img src="{{ '/storage/products/img/'.$product->image }}" width="1440" height="960" class="geodir-lazy-load align size-medium_large" />
+                                                                                            </li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="gd-list-item-right ">
+                                                                            <div class="geodir-post-title">
+                                                                                <h2 class="geodir-entry-title">{{ $product->product_name }}</h2></div>
+                                                                                <div class="gd-badge-meta gd-badge-alignleft" title="{{ $product->shop->name }}">
+                                                                                    <div class="gd-badge" style="background-color:#00ff10;color:#ffffff;"><i class="fas fa-money"></i> <span class='gd-secondary'>{{ $product->product_price}}€</span></div>
+                                                                                </div>
+
+                                                                            <div class="geodir-post-content-container">
+                                                                                <div class="geodir_post_meta  geodir-field-post_content" style='max-height:120px;overflow:hidden;'>{{ $product->product_description }} </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                @endforeach
+                                                            </ul>
+                                                            <div class="clear"></div>
+                                                        </div>
+                                                    </div>
+
+{{--                                                        end--}}
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
                         <div class="geodir-single-taxonomies-container">
                             <div class="geodir-pos_navigation clearfix">
                                 <div class="geodir-post_left">
-                                    <a href="{{ url()->previous() }}" rel="prev">Back</a>
+                                    <a href="{{ url()->previous() }}" rel="prev">Nazad</a>
                                 </div>
                             </div>
                         </div>

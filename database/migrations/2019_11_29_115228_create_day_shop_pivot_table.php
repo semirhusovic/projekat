@@ -14,9 +14,9 @@ class CreateDayShopPivotTable extends Migration
     public function up()
     {
         Schema::create('day_shop', function (Blueprint $table) {
-            $table->unsignedInteger('day_id');
+            $table->unsignedBigInteger('day_id');
             $table->foreign('day_id')->references('id')->on('days')->onDelete('cascade');
-            $table->unsignedInteger('shop_id');
+            $table->unsignedBigInteger('shop_id');
             $table->foreign('shop_id')->references('id')->on('shops')->onDelete('cascade');
             $table->string('from_hours');
             $table->string('from_minutes');
